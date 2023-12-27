@@ -1,18 +1,22 @@
 "use client";
-
+import "./style.css";
 import { useRouter } from "next/navigation";
-function Botao() {
+
+interface BotaoProp {
+  nome?: String;
+  lugar?: String;
+}
+
+function Botao({ lugar = "/ ", nome = "" }: BotaoProp) {
   const router = useRouter();
 
   return (
     <button
+      className="button-36 mr-2"
       type="button"
-      className="flex justify-center 
-        px-24 py-12 rounded-full
-        bg-black text-gray-100 hover:bg-gray-700 mt-2 mb-2"
-      onClick={() => router.push("/teste")}
+      onClick={() => router.push(`${lugar}`)}
     >
-      Click Me
+      {nome}
     </button>
   );
 }
